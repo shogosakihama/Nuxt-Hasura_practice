@@ -39,7 +39,26 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/apollo'
+
   ],
+
+    /*
+   ** appolo module configuration
+   */
+  apollo: {
+    cookieAttributes: {
+      expires: 7 // optional, default: 7 (days)
+    },
+    includeNodeModules: true, // optional, default: false (this includes graphql-tag for node_modules folder)
+    authenticationType: 'Bearer', // optional, default: 'Bearer'
+    // optional
+    errorHandler: '~/plugins/apollo-error-handler.js',
+    // required
+    clientConfigs: {
+      default: '~/apollo/clientConfig.js'
+    }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
