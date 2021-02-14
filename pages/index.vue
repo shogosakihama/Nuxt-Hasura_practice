@@ -2,7 +2,7 @@
   <div>
     <ul>
       <li v-for="user in users" :key="user.id">
-        {{ user.name }}
+        {{ user.id }}
       </li>
     </ul>
   </div>
@@ -22,7 +22,16 @@ export default {
     return {
       title: "Users List"
     };
-  }
+  },
+  computed: {
+    auth() {
+      return this.$auth0;
+    }
+  },
+    mounted() {
+      const token = this.$auth0.getToken();
+      this.$apolloHelpers.onLogin("Bearer " + token);
+    }
 };
 </script>
 
